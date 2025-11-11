@@ -20,12 +20,14 @@ namespace BOOSEprogram1
         {
         CanvasBitmap = new Bitmap(xsize, ysize);
         g = Graphics.FromImage(CanvasBitmap);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.Clear(Color.White);
             Xpos = 100;
             Ypos = 100;
             Pen = new Pen(Color.Blue);
         }
         public int Xpos { get => xPos; set => xPos = value; }
-        public int Ypos { get => yPos; set => xPos = value; }
+        public int Ypos { get => yPos; set => yPos = value; }
         public object PenColour { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Circle(int radius, bool filled)
@@ -40,7 +42,9 @@ namespace BOOSEprogram1
 
         public void DrawTo(int x, int y)
         {
-            throw new NotImplementedException();
+            g.DrawLine(Pen, Xpos, Ypos, x, y);
+            Xpos = x;
+            Ypos = y;
         }
 
         public object getBitmap()
@@ -56,7 +60,16 @@ namespace BOOSEprogram1
 
         public void Rect(int width, int height, bool filled)
         {
-            throw new NotImplementedException();
+            var r = new Rectangle(Xpos, Ypos, width,height );
+            if (filled)
+            {
+                using var b = new SolidBrush(Pen.Color);
+                g.FillRectangle(b, r);
+            }
+            else
+            {
+                g.DrawRectangle(Pen, r);
+            }
         }
 
         public void Reset()
@@ -68,22 +81,35 @@ namespace BOOSEprogram1
 
         public void Set(int width, int height)
         {
-            throw new NotImplementedException();
+            CanvasBitmap?.Dispose();
+            g?.Dispose();
+
+            CanvasBitmap = new Bitmap(width, height);
+            g = Graphics.FromImage(CanvasBitmap);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.Clear(Color.Black);
         }
 
         public void SetColour(int red, int green, int blue)
         {
-            throw new NotImplementedException();
+            Pen.Color = Color.FromArgb(red, green, blue);
+
         }
 
         public void Tri(int width, int height)
         {
-            throw new NotImplementedException();
+           
+            var p1 = new Point(Xpos, Ypos + width);          
+            var p2 = new Point(Xpos +width / height, Ypos);      
+            var p3 = new Point(Xpos + width, Ypos + height);  
+            g.DrawPolygon(Pen, new[] { p1, p2, p3 });
         }
 
         public void WriteText(string text)
         {
-            throw new NotImplementedException();
+            using var font = new Font(FontFamily.GenericSansSerif, 12f);
+            using var b = new SolidBrush(Pen.Color);
+            g.DrawString(text, font, b, new PointF(Xpos, Ypos));
         }
     }
 }
