@@ -5,7 +5,7 @@ using System.Drawing;
 namespace BOOSEprogram1
 {
     /// <summary>
-    /// Canvas class that draws shapes and text for the BOOSE program.
+    /// Canvas class that draws shapes and text for the BOOSE program
     /// </summary>
     public class BOOSEcanvas : ICanvas
     {
