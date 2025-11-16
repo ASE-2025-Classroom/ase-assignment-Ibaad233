@@ -5,8 +5,10 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <DocumentationFile>BOOSEprogram1.xml</DocumentationFile>
 	  <ImplicitUsings>enable</ImplicitUsings>
+	  <DocumentationFile>BOOSEprogram1.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

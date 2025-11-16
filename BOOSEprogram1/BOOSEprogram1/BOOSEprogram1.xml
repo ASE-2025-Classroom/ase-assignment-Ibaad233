@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BOOSEprogram1</name>
+    </assembly>
+    <members>
+        <member name="T:BOOSEprogram1.BOOSEcanvas">
+            <summary>
+            Canvas class that draws shapes and text for the BOOSE program
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a new canvas with the given width and height.
+            </summary>
+            <param name="width">Canvas width in pixels.</param>
+            <param name="height">Canvas height in pixels.</param>
+        </member>
+        <member name="P:BOOSEprogram1.BOOSEcanvas.Xpos">
+            <summary>
+            Current X position of the pen.
+            </summary>
+        </member>
+        <member name="P:BOOSEprogram1.BOOSEcanvas.Ypos">
+            <summary>
+            Current Y position of the pen.
+            </summary>
+        </member>
+        <member name="P:BOOSEprogram1.BOOSEcanvas.PenColour">
+            <summary>
+            Current colour of the pen.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.Set(System.Int32,System.Int32)">
+            <summary>
+            Changes the size of the canvas.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.SetColour(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the pen colour using red, green and blue values.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.MoveTo(System.Int32,System.Int32)">
+            <summary>
+            Moves the pen to a new position without drawing.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.DrawTo(System.Int32,System.Int32)">
+            <summary>
+            Draws a line from the current pen position to a new position.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.Clear">
+            <summary>
+            Clears the canvas to grey.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.Reset">
+            <summary>
+            Resets the pen position and colour to their starting values.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.Circle(System.Int32,System.Boolean)">
+            <summary>
+            Draws a circle with the current pen position as the centre.
+            </summary>
+            <param name="radius">Radius of the circle.</param>
+            <param name="filled">True to fill the circle, false to only draw the outline.</param>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.Rect(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Draws a rectangle at the current pen position.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.Tri(System.Int32,System.Int32)">
+            <summary>
+            Draws a simple triangle based on the current pen position.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.WriteText(System.String)">
+            <summary>
+            Draws a piece of text at the current pen position.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcanvas.getBitmap">
+            <summary>
+            Returns the bitmap so it can be shown on the form.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEcircle">
+            <summary>
+            Custom circle command that draws using our canvas
+            without enforcing the original BOOSE radius limits.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcircle.#ctor">
+            <summary>
+            Default constructor used by the factory system.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcircle.#ctor(BOOSE.Canvas,System.Int32)">
+            <summary>
+            Manual-use constructor (not normally required).
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcircle.Execute">
+            <summary>
+            Performs the circle drawing action.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEcommandfactory">
+            <summary>
+            Factory that creates our custom BOOSE commands.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEcommandfactory.MakeCommand(System.String)">
+            <summary>
+            Makes a command object based on the command name.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEmoveto">
+            <summary>
+            Custom MoveTo command that repositions the canvas cursor
+            to the specified coordinates without drawing anything.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEmoveto.#ctor">
+            <summary>
+            Default constructor used by the command factory.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEmoveto.#ctor(BOOSE.Canvas,System.Int32,System.Int32)">
+            <summary>
+            Optional constructor if you decide to instantiate manually.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEmoveto.Execute">
+            <summary>
+            Carries out the MoveTo command, shifting the cursor position.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSErect">
+            <summary>
+            Custom rectangle command that works with our canvas
+            and removes the standard BOOSE size limitations.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSErect.#ctor">
+            <summary>
+            Default constructor used by the factory.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSErect.#ctor(BOOSE.Canvas,System.Int32,System.Int32)">
+            <summary>
+            Optional constructor for manually creating the command.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSErect.Execute">
+            <summary>
+            Runs the rectangle drawing operation.
+            </summary>
+        </member>
+        <member name="F:BOOSEprogram1.Form1.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.Form1.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:BOOSEprogram1.Form1.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.ApplicationConfiguration">
+            <summary>
+             Bootstrap the application configuration.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.ApplicationConfiguration.Initialize">
+            <summary>
+             Bootstrap the application as follows:
+             <code>
+             global::System.Windows.Forms.Application.EnableVisualStyles();
+             global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+             global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            </code>
+            </summary>
+        </member>
+    </members>
+</doc>
