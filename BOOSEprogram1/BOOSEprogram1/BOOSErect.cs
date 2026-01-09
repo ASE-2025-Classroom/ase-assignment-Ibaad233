@@ -1,52 +1,45 @@
 ﻿using BOOSE;
-using System;
-
 namespace BOOSEprogram1
 {
     /// <summary>
-    /// Custom rectangle command that works with our canvas
-    /// and removes the standard BOOSE size limitations.
+    /// Custom rectangle command that draws a rectangle 
+    /// using the application's canvas instead of BOOSE's default one.
     /// </summary>
     public class BOOSErect : CommandTwoParameters
     {
-        private int width;
-        private int height;
-
         /// <summary>
-        /// Default constructor used by the factory.
+        /// Blank constructor used by the command factory.
         /// </summary>
         public BOOSErect() : base()
         {
         }
-
         /// <summary>
-        /// Optional constructor for manually creating the command.
+        /// Constructor used when creating the command manually.
         /// </summary>
+        /// <param name="c">The canvas used for drawing.</param>
+        /// <param name="width">Rectangle width.</param>
+        /// <param name="height">Rectangle height.</param>
         public BOOSErect(Canvas c, int width, int height) : base(c)
         {
-            this.width = width;
-            this.height = height;
+            Paramsint = new[] { width, height };
         }
-
         /// <summary>
-        /// Runs the rectangle drawing operation.
+        /// Executes the rectangle command. Draws an unfilled rectangle
+        /// starting at the current cursor position.
         /// </summary>
+        /// <exception cref="CanvasException">Thrown if width or height are invalid.</exception>
         public override void Execute()
         {
-            // Allow BOOSE to process and validate the parameters
             base.Execute();
+            int width = Paramsint[0];
+            int height = Paramsint[1];
 
-            // Retrieve integer values from the parsed parameter list
-            width = Paramsint[0];
-            height = Paramsint[1];
 
-            // Basic safeguard to avoid drawing invalid shapes
-            if (width < 1 || height < 1)
+
+            if (width <= 0 || height <= 0)
             {
-                throw new CanvasException("Both rectangle dimensions must be positive numbers.");
+                throw new CanvasException("Rectangle width and height must be greater than zero.");
             }
-
-            // Issue the draw call to the canvas
             Canvas.Rect(width, height, false);
         }
     }

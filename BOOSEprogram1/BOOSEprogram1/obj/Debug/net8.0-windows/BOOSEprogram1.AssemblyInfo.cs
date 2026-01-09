@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BOOSEprogram1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efd11bef846989d5db6367310ce86fef612cb1a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e48ed3390af0684de9c8db1ce37925ae2c591da9")]
 [assembly: System.Reflection.AssemblyProductAttribute("BOOSEprogram1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BOOSEprogram1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -142,24 +142,29 @@
         </member>
         <member name="T:BOOSEprogram1.BOOSErect">
             <summary>
-            Custom rectangle command that works with our canvas
-            and removes the standard BOOSE size limitations.
+            Custom rectangle command that draws a rectangle 
+            using the application's canvas instead of BOOSE's default one.
             </summary>
         </member>
         <member name="M:BOOSEprogram1.BOOSErect.#ctor">
             <summary>
-            Default constructor used by the factory.
+            Blank constructor used by the command factory.
             </summary>
         </member>
         <member name="M:BOOSEprogram1.BOOSErect.#ctor(BOOSE.Canvas,System.Int32,System.Int32)">
             <summary>
-            Optional constructor for manually creating the command.
+            Constructor used when creating the command manually.
             </summary>
+            <param name="c">The canvas used for drawing.</param>
+            <param name="width">Rectangle width.</param>
+            <param name="height">Rectangle height.</param>
         </member>
         <member name="M:BOOSEprogram1.BOOSErect.Execute">
             <summary>
-            Runs the rectangle drawing operation.
+            Executes the rectangle command. Draws an unfilled rectangle
+            starting at the current cursor position.
             </summary>
+            <exception cref="T:BOOSE.CanvasException">Thrown if width or height are invalid.</exception>
         </member>
         <member name="F:BOOSEprogram1.Form1.components">
             <summary>

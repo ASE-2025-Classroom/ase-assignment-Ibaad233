@@ -157,19 +157,7 @@ namespace BOOSEprogram1
         /// </summary>
         public void Rect(int width, int height, bool filled)
         {
-            Rectangle rect = new Rectangle(Xpos, Ypos, width, height);
-
-            if (filled)
-            {
-                using (SolidBrush brush = new SolidBrush(pen.Color))
-                {
-                    graphics.FillRectangle(brush, rect);
-                }
-            }
-            else
-            {
-                graphics.DrawRectangle(pen, rect);
-            }
+            graphics.DrawRectangle(pen, Xpos, Ypos, width, height);
         }
 
         /// <summary>

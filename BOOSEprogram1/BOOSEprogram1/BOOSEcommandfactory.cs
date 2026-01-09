@@ -26,6 +26,9 @@ namespace BOOSEprogram1
             if (commandType == "rect")
                 return new BOOSErect();
 
+            if (commandType == "int")
+                return new BOOSEint();
+
             // If the command isn't one of ours, let the base factory handle it
             return base.MakeCommand(commandType);
         }

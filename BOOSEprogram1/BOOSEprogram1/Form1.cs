@@ -52,7 +52,7 @@ namespace BOOSEprogram1
 
             factory = new BOOSEcommandfactory();
             program = new StoredProgram(canvas);
-            parser = new Parser(factory, program);
+            parser = new BOOSEparser(factory, program);
 
             this.Paint += Form1_Paint;
             this.Load += Form1_Load;
