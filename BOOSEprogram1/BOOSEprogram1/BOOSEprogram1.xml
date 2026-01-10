@@ -4,6 +4,50 @@
         <name>BOOSEprogram1</name>
     </assembly>
     <members>
+        <member name="T:BOOSEprogram1.BOOSEarray">
+            <summary>
+            Array variable for BOOSE language - supports "array type name size" syntax
+            </summary>
+        </member>
+        <member name="P:BOOSEprogram1.BOOSEarray.Size">
+            <summary>
+            Gets the size of the array
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEarray.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:BOOSEprogram1.BOOSEarray.Item(System.Int32)">
+            <summary>
+            Gets or sets a value at the specified index
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEarray.Compile">
+            <summary>
+            Compiles the array declaration
+            Supports both "array name[size]" and "array type name size" syntax
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEarray.Execute">
+            <summary>
+            Executes the array initialization
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEarray.CheckParameters(System.String[])">
+            <summary>
+            Check parameters - no validation
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEcall">
+            <summary>
+            Method call command for BOOSE language
+            Supports:
+              call myMethod 10 5
+              call myMethod(10,5)
+            </summary>
+        </member>
         <member name="T:BOOSEprogram1.BOOSEcanvas">
             <summary>
             Canvas class that draws shapes and text for the BOOSE program
@@ -111,60 +155,278 @@
         </member>
         <member name="T:BOOSEprogram1.BOOSEcommandfactory">
             <summary>
-            Factory that creates our custom BOOSE commands.
+            Factory that creates our custom BOOSE commands
             </summary>
         </member>
         <member name="M:BOOSEprogram1.BOOSEcommandfactory.MakeCommand(System.String)">
             <summary>
-            Makes a command object based on the command name.
+            Makes a command object based on the command name
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEelse">
+            <summary>
+            Else command for if-else statements
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEelse.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEelse.CheckParameters(System.String[])">
+            <summary>
+            Check parameters - no validation needed
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEelse.Compile">
+            <summary>
+            Compiles the else command
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEelse.Execute">
+            <summary>
+            Executes the else command
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEend">
+            <summary>
+            End command that marks the end of the program
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEend.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEend.CheckParameters(System.String[])">
+            <summary>
+            Check parameters - no validation needed
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEend.Compile">
+            <summary>
+            Compiles the end command
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEend.Execute">
+            <summary>
+            Executes the end command - stops program execution
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEevaluation">
+            <summary>
+            Custom evaluation class for handling standalone variable assignments.
+            Allows assignments like "width = 2*radius" after variable declaration.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEevaluation.#ctor">
+            <summary>
+            Constructor for creating evaluation objects.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEevaluation.CheckParameters(System.String[])">
+            <summary>
+            Check parameters - override to remove validation.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEevaluation.Compile">
+            <summary>
+            Compiles the variable assignment statement.
+            Validates that the variable exists before assignment.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEevaluation.Execute">
+            <summary>
+            Executes the variable assignment.
+            Evaluates the expression and updates the variable value.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEevaluation.EvaluateManually(System.String)">
+            <summary>
+            Manually evaluates expressions containing variables and arithmetic operations.
+            Replaces variable names with their values and computes the result.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEfor">
+            <summary>
+            Unrestricted FOR loop for BOOSE.
+            Supports:
+              for var = start to end step stepValue
+            and also supports:
+              for (init; condition; increment)
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEif">
+            <summary>
+            If-else statement implementation for BOOSE language
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEif.CheckParameters(System.String[])">
+            <summary>
+            Check parameters - override to remove validation
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEint">
+            <summary>
+            Represents an integer variable in the BOOSE language.
+            This class handles declaring, storing and updating whole-number values.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEint.#ctor">
+            <summary>
+            Creates a new integer variable command.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEint.Compile">
+            <summary>
+            Reads and processes the variable declaration.
+            This extracts the variable name and any starting value.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEint.Execute">
+            <summary>
+            Evaluates the expression and stores the result as an integer.
+            Updates the program’s variable table with the new value.
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEmethod">
+            <summary>
+            Method definition for BOOSE language.
+            Supports syntax:
+              method int mulMethod int one, int two
+              ...
+              end method
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEmethod.Tokenise(System.String)">
+            <summary>
+            Tokenises the method header, removing commas.
+            Example: "int mulMethod int one, int two"
+            -> ["int","mulMethod","int","one","int","two"]
             </summary>
         </member>
         <member name="T:BOOSEprogram1.BOOSEmoveto">
             <summary>
-            Custom MoveTo command that repositions the canvas cursor
-            to the specified coordinates without drawing anything.
+            Custom MoveTo command
             </summary>
         </member>
-        <member name="M:BOOSEprogram1.BOOSEmoveto.#ctor">
+        <member name="T:BOOSEprogram1.BOOSEparser">
             <summary>
-            Default constructor used by the command factory.
+            Custom parser that handles BOOSE language constructs
             </summary>
         </member>
-        <member name="M:BOOSEprogram1.BOOSEmoveto.#ctor(BOOSE.Canvas,System.Int32,System.Int32)">
+        <member name="T:BOOSEprogram1.BOOSEpeek">
             <summary>
-            Optional constructor if you decide to instantiate manually.
+            Peek command - retrieves a value from an array
+            Supports both:
+              peek var = arrayName[index]
+              peek var = arrayName index
             </summary>
         </member>
-        <member name="M:BOOSEprogram1.BOOSEmoveto.Execute">
+        <member name="T:BOOSEprogram1.BOOSEpen">
             <summary>
-            Carries out the MoveTo command, shifting the cursor position.
+            Pen command to change pen color
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEpoke">
+            <summary>
+            Poke command - sets a value in an array
+            Supports both "poke arrayName[index] = value" and "poke arrayName index = value"
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEpoke.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEpoke.Compile">
+            <summary>
+            Compiles the poke command
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEpoke.Execute">
+            <summary>
+            Executes the poke command
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEpoke.EvaluateExpressionAsInt(System.String)">
+            <summary>
+            Evaluates an expression as an integer
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEpoke.EvaluateExpression(System.String)">
+            <summary>
+            Evaluates an expression
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEpoke.CheckParameters(System.String[])">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:BOOSEprogram1.BOOSEreal">
+            <summary>
+            Custom real (floating-point) variable class that replaces BOOSE's Real class.
+            Removes restrictions on variable names and variable count limits.
+            </summary>
+        </member>
+        <member name="P:BOOSEprogram1.BOOSEreal.Value">
+            <summary>
+            Get or set the double value for this real number.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEreal.#ctor">
+            <summary>
+            Constructor for creating real variable objects.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEreal.CheckParameters(System.String[])">
+            <summary>
+            Check parameters - override to remove validation restrictions.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEreal.Compile">
+            <summary>
+            Compiles the real variable declaration or initialization.
+            Parses variable name and optional initial value expression.
+            </summary>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEreal.Execute">
+            <summary>
+            Executes the real variable initialization.
+            Evaluates the expression and stores the floating-point value.
             </summary>
         </member>
         <member name="T:BOOSEprogram1.BOOSErect">
             <summary>
             Custom rectangle command that draws a rectangle 
-            using the application's canvas instead of BOOSE's default one.
             </summary>
         </member>
-        <member name="M:BOOSEprogram1.BOOSErect.#ctor">
+        <member name="T:BOOSEprogram1.BOOSEwhile">
             <summary>
-            Blank constructor used by the command factory.
+            While loop implementation for BOOSE language
             </summary>
         </member>
-        <member name="M:BOOSEprogram1.BOOSErect.#ctor(BOOSE.Canvas,System.Int32,System.Int32)">
+        <member name="M:BOOSEprogram1.BOOSEwhile.CheckParameters(System.String[])">
             <summary>
-            Constructor used when creating the command manually.
+            Check parameters - override to remove validation
             </summary>
-            <param name="c">The canvas used for drawing.</param>
-            <param name="width">Rectangle width.</param>
-            <param name="height">Rectangle height.</param>
         </member>
-        <member name="M:BOOSEprogram1.BOOSErect.Execute">
+        <member name="T:BOOSEprogram1.BOOSEwrite">
             <summary>
-            Executes the rectangle command. Draws an unfilled rectangle
-            starting at the current cursor position.
+            Custom write command that supports:
+            - numbers (including real variables)
+            - arithmetic expressions
+            - string literals in quotes
+            - string concatenation with +
+            Example: write "£"+y
             </summary>
-            <exception cref="T:BOOSE.CanvasException">Thrown if width or height are invalid.</exception>
+        </member>
+        <member name="M:BOOSEprogram1.BOOSEwrite.EvaluateWriteExpression(System.String)">
+            <summary>
+            Evaluates a BOOSE write expression.
+            Supports string literals and + concatenation.
+            Falls back to numeric evaluation for pure maths.
+            </summary>
         </member>
         <member name="F:BOOSEprogram1.Form1.components">
             <summary>

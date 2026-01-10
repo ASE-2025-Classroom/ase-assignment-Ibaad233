@@ -3,12 +3,23 @@ using System;
 
 namespace BOOSEprogram1
 {
+    /// <summary>
+    /// Represents an integer variable in the BOOSE language.
+    /// This class handles declaring, storing and updating whole-number values.
+    /// </summary>
     public class BOOSEint : Evaluation, ICommand
     {
+        /// <summary>
+        /// Creates a new integer variable command.
+        /// </summary>
         public BOOSEint() : base()
         {
         }
 
+        /// <summary>
+        /// Reads and processes the variable declaration.
+        /// This extracts the variable name and any starting value.
+        /// </summary>
         public override void Compile()
         {
             string text = ParameterList.Trim();
@@ -18,6 +29,7 @@ namespace BOOSEprogram1
                 throw new CanvasException("Variable declaration requires a name");
             }
 
+            // If this variable was already created, only update its value
             if (!string.IsNullOrWhiteSpace(varName))
             {
                 if (text.StartsWith("="))
@@ -42,9 +54,14 @@ namespace BOOSEprogram1
                 expression = "0";
             }
 
+            // Register the variable with the program
             Program.AddVariable(this);
         }
 
+        /// <summary>
+        /// Evaluates the expression and stores the result as an integer.
+        /// Updates the program’s variable table with the new value.
+        /// </summary>
         public override void Execute()
         {
             base.Execute();

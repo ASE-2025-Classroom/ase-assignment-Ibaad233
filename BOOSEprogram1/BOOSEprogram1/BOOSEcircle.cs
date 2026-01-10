@@ -1,5 +1,6 @@
 ﻿using BOOSE;
 using System;
+using System.Drawing;
 
 namespace BOOSEprogram1
 {
